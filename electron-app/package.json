@@ -1,0 +1,27 @@
+{
+  "name": "arxiv-feed-electron",
+  "version": "1.0.0",
+  "description": "Electron version of ArXiv Feed",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron . --dev",
+    "build": "electron-builder"
+  },
+  "dependencies": {
+    "electron-is-dev": "^2.0.0"
+  },
+  "devDependencies": {
+    "electron": "^25.3.1",
+    "electron-builder": "^24.6.3"
+  },
+  "build": {
+    "appId": "com.arxiv-feed.app",
+    "directories": {
+      "output": "dist"
+    },
+    "win": {
+      "target": "nsis"
+    }
+  }
+}

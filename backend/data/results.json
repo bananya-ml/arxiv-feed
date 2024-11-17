@@ -1,0 +1,207 @@
+[
+    {
+        "id": "http://arxiv.org/abs/2411.09566v1",
+        "title": "New orbital periods of high-inclination dwarf novae based on Gaia Alerts   photometry",
+        "authors": [
+            "Catalina Sáez-Carvajal",
+            "Nikolaus Vogt",
+            "Mónica Zorotovic",
+            "Javiera García-Veas",
+            "Gonzalo Aravena-Rojas",
+            "Lukas Dumond",
+            "Felipe Figueroa-Tapia",
+            "Yanina López-Bonilla",
+            "Abigali Rodriguez-Jimenez",
+            "Ignacio Vega-Manubens",
+            "Benjamín Grawe"
+        ],
+        "published": "2024-11-14T16:19:25Z",
+        "abstract": "The orbital period of a cataclysmic variable stands as a crucial parameter for investigating the structure and physics of these binary systems, as well as understanding their evolution. We use photometric Gaia data for dwarf novae (DNe) in the quiescent state which are available for a number of years to determine new orbital periods and improve/modify previously suggested values. Two approaches are implemented for selecting high-inclination targets, either eclipsing or with ellipsoidal variations. We determine new orbital periods for 75 DNe and improve ephemerides for 27 more (three of which change significantly), contributing 9.4% of the known DNe periods of 0.05-2.0 days, and doubling the number of known periods exceeding 0.44 days. Their phase-folded light curves are presented and arranged by orbital period, illustrating the transition from short-period systems, dominated by radiation from the accretion disc and the hot spot, to longer-period DNe, where the Roche-lobe-filling secondary star is the primary visual flux source. This transition -- which occurs around the well-known period gap (around 2-3 hours) -- is expected, as DNe with larger orbital periods typically harbour more massive donors, which contribute to the visible flux. However, this transition is not abrupt. Within the same range of periods, we observe systems dominated by ellipsoidal variations, where the companion star is clearly visible, as well as others dominated by the disc and hot spot. The presence of some DNe with ellipsoidal variations near the lower edge of the period gap is striking, as the companions in these systems are expected to be cool low-mass M-dwarfs not visible in the light curve. This could indicate that we are observing systems where the donor star was originally much more massive and underwent significant nuclear evolution before mass-transfer began, as has been suggested previously for QZ Ser.",
+        "link": "http://arxiv.org/abs/2411.09566v1",
+        "primary_category": "astro-ph.SR",
+        "conclusion": "This study determined new orbital periods for 75 dwarf novae (DNe) and improved or modified ephemerides for 27 more, contributing 9.4% to the known DNe population with periods between 0.05 and 2.0 days.  Significantly, the number of known periods exceeding 0.44 days was doubled.  The analysis revealed a non-abrupt transition in light curve characteristics around the period gap (∼2-3 hours), with systems exhibiting either orbital humps (shorter periods, dominated by disc and hot spot) or ellipsoidal variations (longer periods, dominated by the companion star).  Surprisingly, ellipsoidal variations were observed in some DNe close to the lower edge of the period gap, where companion stars are predicted to be unseen low-mass M-dwarfs, suggesting the donor stars may have undergone significant evolution before mass transfer commenced.  The results substantially increase the population of known DNe with orbital periods, especially those above 0.44 days, offering valuable data for understanding cataclysmic variable evolution.\n",
+        "ref_count": 16
+    },
+    {
+        "id": "http://arxiv.org/abs/2411.09506v1",
+        "title": "Gl 725A b: a potential super-Earth detected with SOPHIE and SPIRou in an   M dwarf binary system at 3.5 pc",
+        "authors": [
+            "P. Cortes-Zuleta",
+            "I. Boisse",
+            "M. Ould-Elhkim",
+            "T. G. Wilson",
+            "P. Larue",
+            "A. Carmona",
+            "X. Delfosse",
+            "J. -F. Donati",
+            "T. Forveille",
+            "C. Moutou",
+            "A. Collier Cameron",
+            "E. Artigau",
+            "L. Acuña",
+            "L. Altinier",
+            "N. Astudillo-Defru",
+            "C. Baruteau",
+            "X. Bonfils",
+            "S. Cabrit",
+            "C. Cadieux",
+            "N. J. Cook",
+            "E. Decocq",
+            "R. F. Diaz",
+            "P. Fouque",
+            "J. Gomes da Silva",
+            "K. Grankin",
+            "S. Grouffal",
+            "N. Hara",
+            "G. Hebrard",
+            "N. Heidari",
+            "J. H. C. Martins",
+            "E. Martioli",
+            "M. Maurice",
+            "J. Scigliuto",
+            "J. Serrano Bell",
+            "S. Sulis",
+            "A. C. Petit",
+            "H. G. Vivien"
+        ],
+        "published": "2024-11-14T15:17:50Z",
+        "abstract": "We report the discovery of a super-Earth candidate orbiting the nearby mid M dwarf Gl\\,725A using the radial velocity (RV) method. The planetary signal has been independently identified using high-precision RVs from the SOPHIE and SPIRou spectrographs, in the optical and near-infrared domains, respectively. We modelled the stellar activity signal jointly with the planet using two Gaussian Processes, one for each instrument to account for the chromaticity of the stellar activity and instrumental systematics, along with a Keplerian model. The signal is significantly detected with a RV semi-amplitude of $1.67\\pm0.20$ m/s. The planet Gl 725A b is found to be in an orbit compatible with circular with a period of $11.2201\\pm0.0051$ days. We analysed 27 sectors of TESS photometry on which no transit event was found. We determined a minimum mass of $M_{p}\\sin{i}=2.78\\pm0.35\\,M_{\\oplus}$ which places the planet in the super-Earth regime. Using Mass-Radius relationships we predict a planetary radius to be between 1.2 and $2.0\\,R_{\\oplus}$. The proximity of Gl 725A, of only 3.5 pc, makes this new exoplanet one of the closest to Earth and joins the group of S-type low-mass planets in short orbits ($P<15$ d) around close M dwarfs.",
+        "link": "http://arxiv.org/abs/2411.09506v1",
+        "primary_category": "astro-ph.EP",
+        "conclusion": "A super-Earth candidate, designated Gl 725A b, orbiting the nearby M dwarf Gl 725A in a binary system was discovered using the radial velocity (RV) method.  Independent detections from SOPHIE and SPIRou spectrographs, at optical and near-infrared wavelengths respectively, confirmed the signal.  The planet exhibits a circular orbit with a period of 11.2201 ± 0.0051 days and a RV semi-amplitude of 1.67 ± 0.20 m/s.  This yields a minimum mass of 2.78 ± 0.35 M⊕.  Analysis of TESS photometry revealed no transits, suggesting a non-transiting nature.  Predicted planetary radius is estimated to be between 1.2 and 2.0 R⊕, placing it in the super-Earth regime.  The proximity of the system (3.5 pc) and the short orbital period make it an important addition to the population of low-mass planets around nearby M dwarfs.  The host star, Gl 725A, is a low-activity mid-M dwarf with a rotation period of 103.1 ± 6.1 days.\n",
+        "ref_count": 27
+    },
+    {
+        "id": "http://arxiv.org/abs/2411.09408v1",
+        "title": "New Results on the Onset of a Coronal Mass Ejection from 5303 Å   Emission Line Observations with VELC/ADITYA-L1",
+        "authors": [
+            "R. Ramesh",
+            "V. Muthu Priyal",
+            "Jagdev Singh",
+            "K. Sasikumar Raja",
+            "P. Savarimuthu",
+            "Priya Gavshinde"
+        ],
+        "published": "2024-11-14T12:51:01Z",
+        "abstract": "We report on the onset of a coronal mass ejection (CME) using spectroscopic observations in 5303 {\\AA} coronal emission line with the Visible Emission Line Coronagraph (VELC) onboard ADITYA-L1, the recently launched first Indian space solar mission. The CME was observed on 16 July 2024 in association with a X1.9 class soft X-ray flare from heliographic location S05W85. The VELC observations were near the west limb of Sun during the CME. The results obtained helped to constrain the onset time of the CME. In addition, they indicate ${\\approx}$50% decrease in the coronal intensity near the source region of the CME due to mass depletion, ${\\approx}$15% enhancement in the emission line width, and redshifted Doppler velocity of about ${\\approx}10$ km/s. The non-thermal velocity associated with the line broadening is ${\\approx}24.87$ km/s.",
+        "link": "http://arxiv.org/abs/2411.09408v1",
+        "primary_category": "astro-ph.SR",
+        "conclusion": "Spectroscopic observations of a coronal mass ejection (CME) onset, using the 5303˚A emission line with VELC/ADITYA-L1, reveal a ≈50% coronal dimming associated with the event.  This dimming, lasting approximately 6 hours, is attributed to CME-induced depletion of coronal material.  Simultaneously, a 15% increase in the emission line width was observed, indicating an increase in Doppler temperature from ≈2.7×10⁶ K to ≈3.6×10⁶ K. A non-thermal velocity of ≈24.87 km/s was also calculated. Doppler velocity measurements showed a redshift of ≈10 km/s, suggesting a possible deflection of the CME by the ambient magnetic field.  The observed event, an X1.9 class flare, was detected approximately 1 hour prior to its appearance in the SoHO/LASCO-C2 field of view.\n",
+        "ref_count": 22
+    },
+    {
+        "id": "http://arxiv.org/abs/2411.09319v1",
+        "title": "Solar flares in the Solar Orbiter Era: Short exposure EUI/FSI   observations of STIX flares",
+        "authors": [
+            "Hannah Collier",
+            "Laura A. Hayes",
+            "Stefan Purkhart",
+            "Säm Krucker",
+            "Daniel F. Ryan",
+            "Vanessa Polito",
+            "Astrid M. Veronig",
+            "Louise K. Harra",
+            "David Berghmans",
+            "Emil Kraaikamp",
+            "Marie Dominique",
+            "Laurent R. Dolla",
+            "Cis Verbeeck"
+        ],
+        "published": "2024-11-14T10:00:51Z",
+        "abstract": "Aims: This paper aims to demonstrate the importance of short-exposure extreme ultraviolet (EUV) observations of solar flares in the study of particle acceleration, heating and energy partition in flares. This work highlights the observations now available from the Extreme Ultraviolet Imager (EUI) instrument suite onboard Solar Orbiter while operating in short exposure mode.   Methods: A selection of noteworthy flares observed simultaneously by the Spectrometer Telescope for Imaging X-rays (STIX) and the Full Sun Imager of EUI (EUI/FSI) are detailed. New insights are highlighted and potential avenues of investigation are demonstrated, including forward modelling the atmospheric response to a non-thermal beam of electrons using the RADYN 1D hydrodynamic code, in order to compare the predicted and observed EUV emission.   Results: The examples given in this work demonstrate that short exposure EUI/FSI observations are providing important diagnostics during flares. A dataset of more than 9000 flares observed by STIX (from November 2022 until December 2023) with at least one short exposure EUI/FSI 174 \\r{A} image is currently available. The observations reveal that the brightest parts of short-exposure observations consist of substructure in flaring ribbons which spatially overlap with the hard X-ray emission observed by STIX in the majority of cases. We show that these observations provide an opportunity to further constrain the electron energy flux required for flare modelling, among other potential applications.",
+        "link": "http://arxiv.org/abs/2411.09319v1",
+        "primary_category": "astro-ph.SR",
+        "conclusion": "The examples presented demonstrate that short-exposure EUI/FSI observations provide valuable diagnostics during flares.  A dataset of over 9000 flares observed by STIX between November 2022 and December 2023, each with at least one short-exposure EUI/FSI 174 Å image, is available.  Observations reveal that the brightest parts of short-exposure images consist of substructure in flaring ribbons, often spatially overlapping with STIX's hard X-ray emission.  These observations offer a means to better constrain electron energy flux required for flare modeling.\n",
+        "ref_count": 15
+    },
+    {
+        "id": "http://arxiv.org/abs/2411.09311v1",
+        "title": "Compression Method for Solar Polarization Spectra Collected from Hinode   SOT/SP Observations",
+        "authors": [
+            "Jargalmaa Batmunkh",
+            "Yusuke Iida",
+            "Takayoshi Oba",
+            "Haruhisa Iijima"
+        ],
+        "published": "2024-11-14T09:38:41Z",
+        "abstract": "The complex structure and extensive details of solar spectral data, combined with a recent surge in volume, present significant processing challenges. To address this, we propose a deep learning-based compression technique using deep autoencoder (DAE) and 1D-convolutional autoencoder (CAE) models developed with Hinode SOT/SP data. We focused on compressing Stokes I and V polarization spectra from the quiet Sun, as well as from active regions, providing a novel insight into comprehensive spectral analysis by incorporating spectra from extreme magnetic fields. The results indicate that the CAE model outperforms the DAE model in reconstructing Stokes profiles, demonstrating greater robustness and achieving reconstruction errors around the observational noise level. The proposed method has proven effective in compressing Stokes I and V spectra from both the quiet Sun and active regions, highlighting its potential for impactful applications in solar spectral analysis, such as detection of unusual spectral signals.",
+        "link": "http://arxiv.org/abs/2411.09311v1",
+        "primary_category": "cs.LG",
+        "conclusion": "The CAE (1D-convolutional autoencoder) model outperformed the DAE (deep autoencoder) model in reconstructing Stokes I and V polarization spectra, demonstrating greater robustness and achieving reconstruction errors near the observational noise level.  The CAE model's performance continued to improve even at higher bottleneck sizes, exceeding the observational noise levels at 56 and 112 nodes.  Both models effectively captured Stokes V shapes in quiet Sun regions, while both models faced challenges in reconstructing spectra from high-magnetic field regions like sunspot centers.  The 28-node bottleneck yielded the best results, with the CAE model exhibiting greater stability in handling data imbalance across different training sets.\n",
+        "ref_count": 20
+    },
+    {
+        "id": "http://arxiv.org/abs/2411.09292v1",
+        "title": "The rotation properties of $δ$ Sct and $γ$ Dor stars",
+        "authors": [
+            "Jiyu Wang",
+            "Xiaodian Chen",
+            "Licai Deng",
+            "Jianxing Zhang",
+            "Weijia Sun"
+        ],
+        "published": "2024-11-14T09:09:05Z",
+        "abstract": "Based on the LAMOST spectroscopy and TESS time-series photometry, we have obtained a main-sequence star sample of $\\delta$ Scuti and $\\gamma$ Doradus stars. The sample includes 1534 $\\delta$ Sct stars, 367 $\\gamma$ Dor stars, 1703 $\\delta$ Sct$| \\gamma$ Dor stars, 270 $\\gamma$ Dor$| \\delta$ Sct stars, along with 105 '$\\delta$ Sct candidates' and 32 '$\\gamma$ Dor candidates'. After correcting for projection effects, we derived the equatorial rotational velocity distribution for $\\delta$ Sct and $\\gamma$ Dor stars and compared it with that of normal stars. The rotational velocity distributions of $\\delta$ Sct and $\\gamma$ Dor stars are extremely similar, with the only difference potentially due to the rotational variable stars that have not been completely removed. In contrast, the rotational velocity distribution of normal stars is more dispersed compared to pulsating stars. Additionally, the peak rotational velocity of the pulsating stars is about 10 km s$^{-1}$ higher than that of normal stars. Unlike the normal stars, which show a monotonic increase in peak velocity with mass between 1.8 and 2.5 $M_{\\odot}$, the rotational velocity distribution of $\\delta$ Sct stars does not exhibit a strong mass dependence. We also found that normal stars accelerate during the late main-sequence evolutionary phase, while $\\delta$ Sct stars decelerate. Furthermore, there may still be unclassified stars with diverse rotational properties in the normal star sample compared to the $\\delta$ Sct stars, which is likely to be an important contributor to the broader dispersion observed in its rotational velocity distribution. The photometric amplitude in $\\delta$ Sct stars is modulated with rotational velocity, with high-amplitude stars typically rotating slowly and low-amplitude stars showing a broad distribution of rotational velocities.",
+        "link": "http://arxiv.org/abs/2411.09292v1",
+        "primary_category": "astro-ph.SR",
+        "conclusion": "The rotational velocity distributions of δ Sct, γ Dor, and normal stars are unimodal.  δ Sct and γ Dor stars exhibit striking similarity in their distributions, differing only potentially at the lower velocity end due to incomplete removal of slow-rotating variable stars.  Normal stars display a broader distribution compared to pulsating stars, encompassing a larger proportion of both slowly and rapidly rotating stars.  Peak rotational velocities are marginally higher for pulsating stars.  A statistically significant difference was found between the distributions of δ Sct and normal stars within the 10th to 90th percentile range.  While normal stars show a monotonic increase in peak velocity with mass between 1.8 and 2.5 M⊙, δ Sct stars show little mass dependence.  Normal stars accelerate in their rotation during late main sequence evolution, while δ Sct stars decelerate.  The results suggest that pulsations in δ Sct and γ Dor stars may facilitate angular momentum transport from the stellar interior to the surface.  A clear correlation was found between photometric amplitude and rotation in δ Sct stars, with high-amplitude stars rotating more slowly, contrasting with the broad distribution of low-amplitude stars.  Conversely, no significant amplitude-rotation relationship was detected in γ Dor stars.\n",
+        "ref_count": 24
+    },
+    {
+        "id": "http://arxiv.org/abs/2411.09272v1",
+        "title": "Unstable gas flow in a flat channel under the influence of a transverse   force field: self-oscillations of the jet",
+        "authors": [
+            "S. D. Korolkov",
+            "V. V. Izmodenov"
+        ],
+        "published": "2024-11-14T08:22:33Z",
+        "abstract": "A subsonic flow of an ideal gas through a flat channel in the presence of a mass force field is considered. The forces acting on the gas are reduced to the attraction to the channel axis in a certain region of the channel. It has been shown that the occurrence of a zone of increased pressure along the axis of a channel leads to the formation of a pressure gradient, which acts as an effective force which opposes the flow. As a result, the flow becomes unstable. For a weak field, this instability is symmetric, while for strong fields it is asymmetric. The characteristics of this instability have been studied numerically in the present work. Possible astrophysical implications of this phenomenon are also discussed.",
+        "link": "http://arxiv.org/abs/2411.09272v1",
+        "primary_category": "astro-ph.SR",
+        "conclusion": "This study investigates the instability of a subsonic gas flow in a flat channel subjected to a transverse force field.  For weak forces, a symmetrical instability emerges, characterized by oscillatory flow with a dominant period related to the time it takes for disturbances to travel across the channel.  Stronger forces induce a strong asymmetric instability with self-oscillations, exhibiting multiple low-frequency oscillations and a broad high-frequency spectrum.  An average-strength force field enables tracing the instability evolution along the channel, linked to the transit time through the forced region.  Importantly, the instability persists even with a continuously differentiable force field, highlighting the crucial role of a concentrated pressure increase in initiating the instability.\n",
+        "ref_count": 7
+    },
+    {
+        "id": "http://arxiv.org/abs/2411.09195v1",
+        "title": "The origin channels of hierarchical binary black hole mergers in the   LIGO-Virgo-KAGRA O1, O2, and O3 runs",
+        "authors": [
+            "Guo-Peng Li",
+            "Xi-Long Fan"
+        ],
+        "published": "2024-11-14T05:34:30Z",
+        "abstract": "We infer the origin channels of hierarchical mergers observed in the LIGO-Virgo-KAGRA (LVK) O1, O2, and O3 runs using a hierarchical Bayesian analysis under a parametric population model. By assuming the active galactic nucleus (ANG) disk and nuclear star cluster (NSC) channels, we find that NSCs likely dominate the hierarchical merger rate in the universe, corresponding to a fraction of $f_{\\rm NSC}=0.87_{-0.29}^{+0.10}$ at 90\\% credible intervals in our fiducial model; AGN disks may contribute up to nearly half of hierarchical mergers detectable with LVK, specifically $f_{\\rm det,AGN}=0.34_{-0.26}^{+0.38}$. We investigate the impact of the escape speed, along with other population parameters on the branching fraction, suggesting that the mass, mass ratio, and spin of the sources play significant roles in population analysis. We show that hierarchical mergers constitute at least $\\sim$$10\\%$ of the gravitational wave events detected by LVK during the O1-O3 runs. Furthermore, we demonstrate that it is challenging to effectively infer detailed information about the host environment based solely on the distribution of black hole merger parameters if multiple formation channels are considered.",
+        "link": "http://arxiv.org/abs/2411.09195v1",
+        "primary_category": "astro-ph.HE",
+        "conclusion": "The analysis of hierarchical binary black hole mergers observed by LIGO-Virgo-KAGRA (LVK) during O1, O2, and O3 runs indicates that nuclear star cluster (NSC) channels likely dominate the hierarchical merger rate in the universe (fNSC = 0.87−0.29+0.10 at 90% credible intervals).  Active galactic nucleus (AGN) disks may contribute up to nearly half of detectable hierarchical mergers (fdet,AGN = 0.34−0.26+0.38).  The branching fractions are significantly influenced by the mass, mass ratio, and spin of the black hole mergers, while the escape speed of NSCs has a less pronounced effect.  Hierarchical mergers represent at least ∼10% of the gravitational wave events detected by LVK during the O1-O3 runs.  Inference of detailed host environment information is challenging when multiple formation channels are considered.\n",
+        "ref_count": 24
+    },
+    {
+        "id": "http://arxiv.org/abs/2411.09179v1",
+        "title": "Solar Energetic Particle Track Accumulation in Edgeworth-Kuiper Belt   Dust Grains",
+        "authors": [
+            "M. Lin",
+            "A. R. Poppe"
+        ],
+        "published": "2024-11-14T04:36:49Z",
+        "abstract": "Interplanetary dust grains (IDPs) originate from a variety of sources and are dynamically transported across the solar system. While in transport, high-$Z$ solar energetic particles (SEPs) with energies of $\\sim$1 MeV/nuc leave damage tracks as they pass through IDPs. SEP track densities can be used as a measure of a grain's space exposure and in turn, help to constrain their lifetimes and origins. Stratospherically collected IDPs with relatively high track densities ($>10^{10}$ cm$^{-2}$) have been interpreted as originating from the Edgeworth-Kuiper Belt. To further test this hypothesis, we use a dynamical dust grain tracing model to explore the accumulation of SEP tracks within EKB dust grains. We demonstrate that, neglecting collisions, dust grains with radii up to 500 $\\mu$m are capable of transiting from the EKB to 1 au despite gravitational perturbations from the outer planets, albeit with decreasing probability as a function of size. Despite this, we find that EKB grains cannot accumulate sufficient tracks to match those reported in the terrestrial stratospheric IDP collection when applying SEP track accumulation rates established from lunar samples at 1 au and assuming the SEP flux scales with heliocentric distance as $r^{-1.7}$. By exploring the radial scaling of the SEP flux, we find that a shallower SEP radial distribution of $r^{-1.0}$ does allow for the accumulation of $>$$10^{10}$ tracks cm$^{-2}$ in EKB dust grains that reach 1 au. We urge further research into the propagation and distribution of high-$Z$ SEPs throughout the heliosphere in order to better constrain track accumulation in IDPs.",
+        "link": "http://arxiv.org/abs/2411.09179v1",
+        "primary_category": "astro-ph.EP",
+        "conclusion": "The study investigated the accumulation of solar energetic particle (SEP) tracks in Edgeworth-Kuiper Belt (EKB) dust grains.  Dynamical modeling, including planetary perturbations, showed that EKB grains can transit to 1 AU, with smaller grains having a higher probability.  However, the accumulated track densities in the model, assuming a radial SEP flux scaling of r<sup>-1.7</sup>, were consistently lower than those observed in stratospheric dust collections.  A shallower radial scaling of r<sup>-1.0</sup> for the high-Z SEP flux better matched the observed track densities.  The study emphasizes the need for a more precise understanding of high-Z SEP propagation throughout the heliosphere, noting that current models using proton SEP flux scaling are inadequate.  Additional factors, such as collisions and contributions from other particle sources like anomalous cosmic rays (ACRs), are discussed as potential contributors to the observed track densities, and warrant further investigation.\n",
+        "ref_count": 23
+    },
+    {
+        "id": "http://arxiv.org/abs/2411.09112v1",
+        "title": "On the non-dissipative orbital evolution of a binary system comprising   non-compact components with misaligned spin and orbital angular momenta",
+        "authors": [
+            "Y. A. Lazovik",
+            "P. B. Ivanov",
+            "J. C. B. Papaloizou"
+        ],
+        "published": "2024-11-14T01:02:39Z",
+        "abstract": "In this Paper we determine the non-dissipative tidal evolution of a close binary system with an arbitrary eccentricity in which the spin angular momenta of both components is misaligned with the orbital angular momentum. We focus on the situation where the orbital angular momentum dominates the spin angular momenta and so remains at small inclination to the conserved total angular momentum. Torques arising from rotational distortion and tidal distortion taking account of Coriolis forces are included. This extends the previous work of Ivanov & Papaloizou relaxing the limitation resulting from the assumption that one of the components is compact and has zero spin angular momentum. Unlike the above study, the evolution of spin-orbit inclination angles is driven by both types of torque. We develop a simple analytic theory describing the evolution of orbital angles and compare it with direct numerical simulations. We find that the tidal torque prevails near 'critical curves' in parameter space where the time-averaged apsidal precession rate is close to zero. In the limit of small spin, these curves exist only for systems that have at least one component with retrograde rotation. As in our previous work, we find solutions close to these curves for which the apsidal angle librates. As noted there, this could result in oscillation between prograde and retrograde states. We consider the application of our approach to systems with parameters similar to those of the misaligned binary DI Her.",
+        "link": "http://arxiv.org/abs/2411.09112v1",
+        "primary_category": "astro-ph.SR",
+        "conclusion": "This paper extends previous work on the non-dissipative tidal evolution of close binary systems with misaligned spin and orbital angular momenta by allowing both components to be non-compact.  The evolution of spin-orbit inclination angles is driven by both rotational distortion and tidal distortion torques, considering Coriolis forces.  Analysis, both analytic and numerical, demonstrates libration and circulation of the apsidal angle near critical curves in parameter space where the time-averaged apsidal precession rate is zero.  For small spin, these curves exist only for systems with at least one retrograde rotation.  The results are compared to a model system with parameters similar to those of the misaligned binary DI Her, finding good agreement with numerical simulations, particularly in the case of the secondary component.  The findings suggest that the effect of both components' spin angular momenta on the orbital evolution is significant, leading to potentially chaotic behavior near separatrix solutions, and highlight the relevance of the results for understanding the evolution of misaligned binary systems, such as DI Her.\n",
+        "ref_count": 14
+    }
+]
