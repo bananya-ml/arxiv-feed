@@ -1,5 +1,5 @@
 import os
-import json
+from utils import save_summaries
 import logging
 
 import google.generativeai as genai
@@ -53,9 +53,8 @@ class PaperSummarizer:
                 os.remove(pdf_path)
                 logger.debug(f"Cleaned up temporary file: {pdf_path}")
 
-    def generate_insights(self, content: Dict) -> str:
+    def generate_insights(self, full_text: str) -> str:
         logger.info("Starting insight generation")
-        full_text = "\n\n".join([doc.text for doc in content])
         
         prompt = f"""Please summarize the paper by author(s) in one concise sentence. Then, list key insights and lessons learned from the paper. 
                     Next, generate 3-5 questions that you would like to ask the authors about their work. Finally, provide 3-5 suggestions for 
@@ -71,10 +70,8 @@ class PaperSummarizer:
             logger.error(f"Error generating insights: {e}", exc_info=True)
             return "Error generating insights"
         
-    def generate_summary(self, content: Dict, recursive:bool=False) -> str:
+    def generate_summary(self, full_text: str, recursive:bool=False) -> str:
         logger.info(f"Starting summary generation (recursive={recursive})")
-        
-        full_text = "\n\n".join([doc.text for doc in content])
 
         if recursive:
             logger.debug("Using recursive summarization approach")
@@ -133,8 +130,6 @@ class PaperSummarizer:
                 chunks = text_splitter.split_text(combined_summary)
                 summaries = []
                 for chunk in chunks:
-                    # prompt = f"""Create a high-level summary of this text, preserving key concepts and relationships:
-                    #             [Previous Summary Chunk: {chunk}]"""
                     prompt = prompt_template(chunk=chunk)
                     try:
                         response = self.model.generate_content(prompt)
@@ -176,35 +171,12 @@ class PaperSummarizer:
         Returns:
             str: Generated summary
         """
+        full_text = "\n\n".join([doc.text for doc in parsed_content])
         
-        summary = self.generate_summary(parsed_content, recursive=False)
-        insights = self.generate_insights(parsed_content)
+        summary = self.generate_summary(full_text, recursive=False)
+        insights = self.generate_insights(full_text)
         
-        return summary, insights
-
-def save_summaries(paper_link: str, summary: str, insights: str):
-    """
-    """
-    logger.info(f"Saving summaries for paper: {paper_link}")
-    try:
-        try:
-            with open('./data/summaries.json', 'r', encoding='utf-8') as f:
-                summaries = json.load(f)
-                if not isinstance(summaries, dict):
-                    logger.warning("Existing summaries file is not a dictionary, creating new")
-        except (FileNotFoundError, json.JSONDecodeError):
-            summaries = {}
-
-        summaries[paper_link] = {
-            'summary': summary,
-            'insights': insights
-        }
-
-        with open('./data/summaries.json', 'w', encoding='utf-8') as f:
-            json.dump(summaries, f, ensure_ascii=False, indent=4)
-            
-    except Exception as e:
-        logger.error(f"Error saving summaries: {e}", exc_info=True)
+        return summary, insights, full_text
     
  
 # if __name__ == "__main__":

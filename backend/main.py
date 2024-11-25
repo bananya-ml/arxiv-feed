@@ -1,22 +1,29 @@
-from fastapi import FastAPI, HTTPException, status, Request
+from fastapi import FastAPI, HTTPException, status, Request, BackgroundTasks
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 from typing import Optional, List
 import os
+import json
 
-from modules.api import get_papers, save_results
-from modules.summarization import save_summaries, PaperSummarizer
+from modules.api import get_papers
+from modules.summarization import PaperSummarizer
 from modules.data_extractor import extract_metadata
-from modules.utils import download_pdf
+from modules.embeddings import EmbeddingsManager
+from modules.chat import generate_response
+from modules.utils import download_pdf, save_results, save_summaries
 
 from dotenv import load_dotenv
 import time
 import logging
-from datetime import datetime
+import yaml
 
 load_dotenv()
+
+# Load configuration from YAML file
+with open("chromadb_config.yaml", "r") as config_file:
+    yaml_config = yaml.safe_load(config_file)
 
 logging.basicConfig(
     level=logging.INFO,
@@ -24,6 +31,10 @@ logging.basicConfig(
     datefmt='%Y-%m-%d %H:%M:%S'
 )
 logger = logging.getLogger(__name__)
+
+RESULTS_FILE_PATH = "./data/results.json"
+SUMMARIES_FILE_PATH = "./data/summaries.json"
+LOCAL_VECTORSTORE_PATH = "./data/db/chromadb_storage"
 
 def get_cors_origins():
     origins_str = os.getenv("CORS_ORIGINS", "http://localhost:3000")
@@ -63,6 +74,9 @@ app.add_middleware(
 
 summarizer = PaperSummarizer()
 
+summarizer = PaperSummarizer()
+embeddings_manager = EmbeddingsManager(config=yaml_config, path=LOCAL_VECTORSTORE_PATH)
+
 class ErrorResponse(BaseModel):
     detail: str
 
@@ -90,7 +104,47 @@ class PaperResponse(BaseModel):
             }
         }
 
-@app.post("/process_papers/", 
+class SearchRequest(BaseModel):
+    query: str = Field(..., description="Search query or prompt", min_length=1, max_length=500)
+    paper_url: Optional[str] = Field(default=None, description="Optional URL to filter search results")
+    top_k: int = Field(default=5, ge=1, le=10, description="Number of top results to return")
+
+class SearchResult(BaseModel):
+    chunk_text: str
+    distance: float
+    doc_id: str
+    paper_url: str
+
+    class Config:
+        json_schema_extra = {
+            "example": {
+                "chunk_text": "A sample text chunk from the research paper",
+                "distance": 0.75,
+                "doc_id": "unique-document-id",
+                "paper_url": "https://example.com/paper.pdf"
+            }
+        }
+
+class ChatResponse(BaseModel):
+    similar_chunks: List[SearchResult]
+    llm_response: str
+
+    class Config:
+        json_schema_extra = {
+            "example": {
+                "similar_chunks": [
+                    {
+                        "chunk_text": "A sample text chunk from the research paper",
+                        "distance": 0.75,
+                        "doc_id": "unique-document-id",
+                        "paper_url": "https://example.com/paper.pdf"
+                    }
+                ],
+                "llm_response": "Based on the relevant papers, the answer to your query is..."
+            }
+        }
+
+@app.post("/process_papers", 
     response_model=List[PaperResponse],
     responses={
         200: {"description": "Successfully processed papers"},
@@ -100,7 +154,8 @@ class PaperResponse(BaseModel):
     summary="Process research papers",
     description="Downloads and processes research papers, generating summaries and extracting metadata."
 )
-async def process_papers(max_results: int = 10, category: str = "astro-ph.SR"):
+
+async def process_papers(background_tasks: BackgroundTasks, max_results: int = 10, category: str = "astro-ph.SR"):
     try:
         logger.info(f"Starting to process {max_results} papers from category: {category}")
         
@@ -120,9 +175,38 @@ async def process_papers(max_results: int = 10, category: str = "astro-ph.SR"):
             )
         
         logger.info(f"Found {len(papers)} papers to process")
+        
+        # check for existing results
+        existing_results = []
+        for paper in papers:
+            if os.path.exists(RESULTS_FILE_PATH):
+                with open(RESULTS_FILE_PATH, 'r') as results_file:
+                    existing_data = json.load(results_file)
+                    if paper in existing_data:
+                        existing_results.append(paper)
+
+        if existing_results:
+            summaries_exist = True
+            for paper in existing_results:
+                if not os.path.exists(SUMMARIES_FILE_PATH):
+                    summaries_exist = False
+                    break
+                with open(SUMMARIES_FILE_PATH, 'r') as summaries_file:
+                    summaries_data = json.load(summaries_file)
+                    if paper['link'] not in summaries_data:
+                        summaries_exist = False
+                        break
+            
+            if summaries_exist:
+                logger.info("Returning existing results and summaries.")
+                for paper in existing_results:
+                    paper['summary'] = summaries_data[paper['link']]['summary']
+                    paper['insight'] = summaries_data[paper['link']]['insight']
+                return existing_results
+
         processed_papers = []
         for index, paper in enumerate(papers, 1):
-            while True:  # Infinite retry loop for parsing
+            while True:
                 try:
                     logger.info(f"Processing paper {index}/{len(papers)}: {paper.get('title', 'Unknown Title')}")
                     
@@ -138,8 +222,7 @@ async def process_papers(max_results: int = 10, category: str = "astro-ph.SR"):
                     parsed_content = summarizer.parse_pdf(pdf_path)
                     if not parsed_content:
                         logger.error(f"Failed to parse paper: {paper['link']}")
-                        # Retry parsing the same paper
-                        continue
+                        continue  # Retry parsing the same paper
                     
                     logger.debug("Successfully parsed PDF content")
                     metadata = extract_metadata(parsed_content)
@@ -147,20 +230,27 @@ async def process_papers(max_results: int = 10, category: str = "astro-ph.SR"):
                         'conclusion': metadata['conclusion'],
                         'ref_count': metadata['ref_count']
                     })
-                    save_results([paper])
+                    save_results([paper], RESULTS_FILE_PATH)
                     logger.debug("Saved paper results")
 
-                    summary, insight = summarizer.summarize_paper(parsed_content)
-                    save_summaries(paper['link'], summary, insight)
+                    summary, insight, full_text = summarizer.summarize_paper(parsed_content)
+                    save_summaries(paper['link'], summary, insight, full_text, SUMMARIES_FILE_PATH)
                     logger.debug("Saved paper summaries")
-                    
+
+                    background_tasks.add_task(
+                        embeddings_manager.store_document_embeddings, 
+                        text=full_text, 
+                        url=paper['link']
+                    )
+                    logger.debug("Embedding task added to background")
+
                     processed_papers.append(paper)
                     logger.info(f"Successfully processed paper {index}/{len(papers)}")
                     break  # Exit the retry loop on success
             
                 except Exception as e:
                     logger.error(f"Error processing paper {paper['link']}: {str(e)}", exc_info=True)
-                    if "LlamaParse" in str(e):  # Check if the error is related to LlamaParse
+                    if "LlamaParse" in str(e):
                         logger.warning("Retrying due to LlamaParse communication issue...")
                         continue  # Retry if LlamaParse fails
                     else:
@@ -170,6 +260,7 @@ async def process_papers(max_results: int = 10, category: str = "astro-ph.SR"):
                         )
         
         logger.info(f"Successfully processed all {len(processed_papers)} papers")
+
         return processed_papers
     
     except Exception as e:
@@ -177,6 +268,68 @@ async def process_papers(max_results: int = 10, category: str = "astro-ph.SR"):
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail=f"Failed to process papers - {str(e)}"
+        )
+
+@app.post("/chat", 
+    response_model=ChatResponse,
+    responses={
+        200: {"description": "Successfully generated response with similar text chunks"},
+        400: {"model": ErrorResponse, "description": "Bad request"},
+        500: {"model": ErrorResponse, "description": "Internal server error"}
+    },
+    summary="Search similar text chunks and generate response",
+    description="Search for text chunks similar to the given prompt and generate an LLM response using the chunks as context."
+)
+async def search_similar_chunks(search_request: SearchRequest):
+    try:
+        logger.info(f"Searching for similar chunks with prompt: {search_request.query}")
+        
+        if not search_request.query:
+            raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                detail="Query must not be empty"
+            )
+
+        results = embeddings_manager.search_similar_chunks(
+            query=search_request.query, 
+            top_k=search_request.top_k, 
+            url=search_request.paper_url or ""
+        )
+        
+        search_results = [
+            SearchResult(
+                chunk_text=result['chunk_text'],
+                distance=result['distance'],
+                doc_id=result['doc_id'],
+                paper_url=result['paper_url']
+            ) for result in results
+        ]
+        
+        logger.info(f"Found {len(search_results)} similar chunks")
+        context = "\n\n".join([result.chunk_text for result in search_results])
+        
+        try:
+            logger.info("Generating LLM response using context")
+            response = generate_response(search_request.query, context)
+            logger.debug("Successfully generated LLM response")
+            
+        except Exception as e:
+            logger.error(f"Error generating LLM response: {e}", exc_info=True)
+            raise HTTPException(
+                status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+                detail=f"Failed to generate response - {str(e)}"
+            )
+        
+        return ChatResponse(
+            similar_chunks=search_results,
+            llm_response=response
+        )
+    
+    except Exception as e:
+        logger.error(f"Error in search_similar_chunks: {str(e)}", exc_info=True)
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"Failed to process chat request - {str(e)}"
         )
 
 @app.middleware("http")

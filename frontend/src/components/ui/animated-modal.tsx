@@ -35,16 +35,35 @@ export const useModal = () => {
   return context;
 };
 
-export function Modal({ children }: { children: ReactNode }) {
-  return <ModalProvider>{children}</ModalProvider>;
+export function Modal({ 
+  children, 
+  open: controlledOpen, 
+  onOpenChange 
+}: { 
+  children: ReactNode, 
+  open?: boolean, 
+  onOpenChange?: (open: boolean) => void 
+}) {
+  const [internalOpen, setInternalOpen] = useState(false);
+  
+  const open = controlledOpen ?? internalOpen;
+  const setOpen = onOpenChange ?? setInternalOpen;
+
+  return (
+    <ModalContext.Provider value={{ open, setOpen }}>
+      {children}
+    </ModalContext.Provider>
+  );
 }
 
 export const ModalTrigger = ({
   children,
   className,
+  onClick,
 }: {
   children: ReactNode;
   className?: string;
+  onClick?: () => void;
 }) => {
   const { setOpen } = useModal();
   return (
@@ -53,7 +72,10 @@ export const ModalTrigger = ({
         "px-4 py-2 rounded-md text-black dark:text-white text-center relative overflow-hidden",
         className
       )}
-      onClick={() => setOpen(true)}
+      onClick={() => {
+        setOpen(true);
+        onClick && onClick();
+      }}
     >
       {children}
     </button>
@@ -190,7 +212,7 @@ const Overlay = ({ className }: { className?: string }) => {
   );
 };
 
-const CloseIcon = () => {
+export const CloseIcon = () => {
   const { setOpen } = useModal();
   return (
     <button

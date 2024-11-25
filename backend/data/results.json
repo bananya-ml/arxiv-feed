@@ -203,5 +203,51 @@
         "primary_category": "astro-ph.SR",
         "conclusion": "This paper extends previous work on the non-dissipative tidal evolution of close binary systems with misaligned spin and orbital angular momenta by allowing both components to be non-compact.  The evolution of spin-orbit inclination angles is driven by both rotational distortion and tidal distortion torques, considering Coriolis forces.  Analysis, both analytic and numerical, demonstrates libration and circulation of the apsidal angle near critical curves in parameter space where the time-averaged apsidal precession rate is zero.  For small spin, these curves exist only for systems with at least one retrograde rotation.  The results are compared to a model system with parameters similar to those of the misaligned binary DI Her, finding good agreement with numerical simulations, particularly in the case of the secondary component.  The findings suggest that the effect of both components' spin angular momenta on the orbital evolution is significant, leading to potentially chaotic behavior near separatrix solutions, and highlight the relevance of the results for understanding the evolution of misaligned binary systems, such as DI Her.\n",
         "ref_count": 14
+    },
+    {
+        "id": "http://arxiv.org/abs/2411.11840v1",
+        "title": "Mass Transfer in Eccentric Orbits with Self-consistent Stellar Evolution",
+        "authors": [
+            "Kyle Akira Rocha",
+            "Rachel Hur",
+            "Vicky Kalogera",
+            "Seth Gossage",
+            "Meng Sun",
+            "Zoheyr Doctor",
+            "Jeff J. Andrews",
+            "Simone S. Bavera",
+            "Max Briel",
+            "Tassos Fragos",
+            "Konstantinos Kovlakas",
+            "Matthias U. Kruckow",
+            "Devina Misra",
+            "Zepei Xing",
+            "Emmanouil Zapartas"
+        ],
+        "published": "2024-11-18T18:58:23Z",
+        "abstract": "We investigate Roche lobe overflow mass transfer (MT) in eccentric binary systems between stars and compact objects (COs), modeling the coupled evolution of both the star and the orbit due to eccentric MT (eMT) in a self-consistent framework. We implement the analytic expressions for secular rates of change of the orbital semi-major axis and eccentricity, assuming a delta function MT at periapse, into the binary stellar evolution code MESA. Two scenarios are examined: (1) a simplified model isolating the effects of eMT on stellar and orbital evolution, and (2) realistic binary configurations that include angular momentum exchange (e.g., tides, mass loss, spin-orbit coupling, and gravitational wave radiation). Unlike the ad hoc approach of instant circularization that is often employed, explicit modeling of eMT reveals a large fraction of binaries can remain eccentric post-MT. Even binaries which naturally circularize during eMT have different properties (donor mass and orbital size) compared to predictions from instant circularization, with some showing fundamentally different evolutionary outcomes (e.g., stable versus unstable MT). We demonstrate that a binary's initial mass ratio and eccentricity are predictive of whether it will remain eccentric or circularize after eMT. These findings underscore the importance of eMT in understanding CO-hosting binary populations, including X-ray binaries, gravitational wave sources, and other high-energy transients.",
+        "link": "http://arxiv.org/abs/2411.11840v1",
+        "primary_category": "astro-ph.SR",
+        "conclusion": "The study implemented secular orbital evolution equations for non-conservative eccentric mass transfer (eMT) into self-consistent stellar evolution calculations using MESA.  Results from a parameter study with simplified physics and a full-physics grid with astrophysical initial conditions show that a significant fraction of compact object (CO)-hosting binaries initiate mass transfer (MT) while maintaining eccentricity.  Approximately one-third of the simulated binaries remain eccentric post-MT, while the rest naturally circularize.  This division is strongly dependent on initial mass ratio (q) and eccentricity (e), with a fitting function (ecrit) developed to predict the bifurcation between these outcomes.  Black hole-hosting binaries are more likely to remain eccentric than neutron star-hosting binaries, often exhibiting eccentric pumping and orbital expansion.  Even for binaries that circularize, the final properties (donor masses, orbital periods) differ significantly from predictions using the standard assumption of instant circularization, highlighting the importance of considering eMT in modeling CO-hosting binary populations.  Results suggest eMT will have a significant impact on various CO-hosting binary populations, including low-mass and high-mass X-ray binaries, binary black hole mergers, and gamma-ray burst progenitors.\n",
+        "ref_count": 28
+    },
+    {
+        "id": "http://arxiv.org/abs/2411.11831v1",
+        "title": "Let there be neutrons! Hadronic photoproduction from a large flux of   high-energy photons",
+        "authors": [
+            "Matthew R. Mumpower",
+            "Tsung-Shung H. Lee",
+            "Nicole Lloyd-Ronning",
+            "Brandon L. Barker",
+            "Axel Gross",
+            "Samuel Cupp",
+            "Jonah M. Miller"
+        ],
+        "published": "2024-11-18T18:49:04Z",
+        "abstract": "We propose that neutrons may be generated in high-energy, high-flux photon environments via photo-induced reactions on pre-existing baryons. These photo-hadronic interactions are expected to occur in astrophysical jets and surrounding material. Historically, these reactions have been attributed to the production of high-energy cosmic rays and neutrinos. We estimate the photoproduction off of protons in the context of gamma-ray bursts, where it is expected there will be sufficient baryonic material that may be encompassing or entrained in the jet. We show that typical stellar baryonic material, even material completely devoid of neutrons, can become inundated with neutrons in situ via hadronic photoproduction. Consequently, this mechanism provides a means for collapsars and other astrophysical sites containing substantial flux of high-energy photons to be favorable for neutron-capture nucleosynthesis.",
+        "link": "http://arxiv.org/abs/2411.11831v1",
+        "primary_category": "astro-ph.HE",
+        "conclusion": "This study investigates neutron production via photo-hadronic interactions in high-energy photon environments, particularly within the context of long gamma-ray bursts (GRBs) associated with collapsars.  The authors demonstrate that typical stellar material, even material initially devoid of neutrons, can become neutron-rich in situ due to these interactions. This mechanism suggests collapsars and other astrophysical sites with substantial high-energy photon fluxes are favorable for neutron-capture nucleosynthesis (r-process).  Simulations using the PRISM reaction network indicate that different conditions within the GRB cocoon—including mixing efficiency, initial density, and temperature—lead to varied nucleosynthesis outcomes, ranging from a robust r-process producing actinides to a slower intermediate neutron capture process (i-process).  The study concludes that the cocoon region is a promising site for neutron-rich nucleosynthesis, capable of producing abundance patterns aligning with solar r-process residuals, and that this material is expected to be ejected into the circumstellar medium.\n",
+        "ref_count": 24
     }
 ]

@@ -2,18 +2,20 @@ import { useState, useEffect } from 'react';
 import PaperCard from './PaperCard';
 import PaperModal from './PaperModal';
 import { Paper } from '../types/Paper';
+import ChatInterface from './ChatInterface';
 import { fetchMockPapers } from '../services/mockPaperService';
 import {
   Modal,
   ModalBody,
   ModalTrigger,
+  CloseIcon
 } from './ui/animated-modal';
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
 import rehypeRaw from 'rehype-raw';
-
+import { motion } from 'framer-motion';
 
 const GRID_ROWS = 2;
 const GRID_COLUMNS = 5;
@@ -24,6 +26,9 @@ const Dashboard: React.FC = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [chatModalOpen, setChatModalOpen] = useState<boolean>(false);
+  const [activePaperIndex, setActivePaperIndex] = useState<number | null>(null);
+  const [_, setIsModalOpen] = useState<boolean>(false);
 
   useEffect(() => {
     fetchPapers();
@@ -65,7 +70,11 @@ const Dashboard: React.FC = () => {
       >
         {papers.map((paper, index) => (
           <Modal key={index}>
-            <ModalTrigger className='relative w-full aspect-square block focus:outline-none'>
+            <ModalTrigger className='relative w-full aspect-square block focus:outline-none'
+            onClick={() => {
+              setIsModalOpen(true);
+              setChatModalOpen(false);
+            }}>
               <div>
                 <PaperCard
                   paper={paper}
@@ -75,34 +84,75 @@ const Dashboard: React.FC = () => {
                 />
               </div>
             </ModalTrigger>
-            <ModalBody className="h-[90vh] flex flex-col">
-              <div className="flex flex-col flex-1 overflow-hidden">
-                <div className="p-8 md:p-10 pb-6 border-b border-gray-200 dark:border-neutral-800">
-                  <h2 className="text-2xl font-bold">
-                    <ReactMarkdown
-                      remarkPlugins={[remarkGfm, remarkMath]}
-                      rehypePlugins={[rehypeKatex, rehypeRaw]}>{paper.title}
-                    </ReactMarkdown>
-                  </h2>
-                  <p className="mt-2 text-neutral-600 dark:text-neutral-400">
-                    {paper.authors.join(', ')}
-                  </p>
-                </div>
-                
-                <div className="flex-1 overflow-y-auto p-8 md:p-10">
-                  <PaperModal 
-                    paper={paper}
-                    onClose={() => {}}
-                  />
-                </div>
-                <div className="p-4 border-t border-gray-200 dark:border-neutral-800 bg-gray-50 dark:bg-neutral-900 flex justify-end gap-4">
-                  <button className="px-4 py-2 bg-gray-200 text-black dark:bg-black dark:border-black dark:text-white border border-gray-300 rounded-md text-sm hover:border-blue-700">
-                    Download PDF
-                  </button>
-                  <button className="px-4 py-2 bg-black text-white dark:bg-white dark:text-black text-sm rounded-md border border-black hover:border-blue-700">
-                    Cite
-                  </button>
-                </div>
+            <ModalBody 
+              className={`h-[90vh] flex flex-col transition-[min-width] duration-300 ease-in-out 
+                ${chatModalOpen ? 'min-w-[80vw]' : 'min-w-[40vw]'}`}
+            >
+              <div className="mt-2">
+                <button onClick={() => setChatModalOpen(false)}>
+                  <CloseIcon />
+                </button>
+              </div>
+              <div className="flex flex-1 relative overflow-hidden px-4">
+                <motion.div 
+                  initial={{ width: '100%' }}
+                  animate={{ 
+                    width: chatModalOpen ? '50%' : '100%',
+                  }}
+                  transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+                  className="flex flex-col overflow-hidden"
+                >
+                  <div className="p-8 md:p-6 pb-6 border-b border-gray-200 dark:border-neutral-800">
+                    <h2 className="text-2xl font-bold">
+                      <ReactMarkdown
+                        remarkPlugins={[remarkGfm, remarkMath]}
+                        rehypePlugins={[rehypeKatex, rehypeRaw]}>{paper.title}
+                      </ReactMarkdown>
+                    </h2>
+                    <p className="mt-2 text-neutral-600 dark:text-neutral-400">
+                      {paper.authors.join(', ')}
+                    </p>
+                  </div>
+                  
+                  <div className="flex-1 overflow-y-auto p-8 md:p-10 bg-[#222222] rounded-lg">
+                    <PaperModal 
+                      paper={paper}
+                      onClose={() => {}}
+                    />
+                  </div>
+                  <div className="p-4 border-t mb-4 rounded-lg border-gray-200 dark:border-neutral-800 bg-gray-50 dark:bg-neutral-900 flex justify-end gap-4">
+                    <button
+                      onClick={() => {
+                        setChatModalOpen(true);
+                        setActivePaperIndex(index);
+                      }}
+                      disabled={chatModalOpen && activePaperIndex === index}
+                      className={`px-4 py-2 text-sm rounded-md border 
+                        ${(chatModalOpen && activePaperIndex === index)
+                          ? 'bg-gray-300 text-gray-500 border-gray-300 cursor-not-allowed' 
+                          : 'bg-cyan-600 text-white border-cyan-600 hover:bg-cyan-700'}`}
+                    >
+                      Chat with the paper
+                    </button>
+                  </div>
+                </motion.div>
+                {chatModalOpen && (
+                  <div className="w-px bg-gray-200 dark:bg-neutral-800 mx-4 mb-10" />
+                )}
+                {chatModalOpen && activePaperIndex !== null && (
+  <motion.div 
+    initial={{ width: 0, opacity: 0 }}
+    animate={{ 
+      width: '50%', 
+      opacity: 1,
+    }}
+    exit={{ width: 0, opacity: 0 }}
+    transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+    className="pl-4 flex flex-col overflow-hidden relative"
+  >
+    <ChatInterface paper={papers[activePaperIndex]} />
+  </motion.div>
+)}
               </div>
             </ModalBody>
           </Modal>
